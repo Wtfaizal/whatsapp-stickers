@@ -1,0 +1,30 @@
+import qrcode
+import json
+
+# Sticker Pack Details
+sticker_pack = {
+    "identifier": "my_sticker_pack",
+    "name": "Cool Stickers",
+    "publisher": "Your Name",
+    "stickers": [
+        {
+            "image": "https://yourwebsite.com/stickers/sticker1.png",
+            "emoji": "😀"
+        },
+        {
+            "image": "https://yourwebsite.com/stickers/sticker2.png",
+            "emoji": "😂"
+        }
+    ]
+}
+
+# Save JSON file (Upload this to a public server)
+with open("sticker_pack.json", "w") as f:
+    json.dump(sticker_pack, f, indent=4)
+
+# Generate QR Code
+sticker_pack_url = "https://yourwebsite.com/sticker_pack.json"
+qr = qrcode.make(sticker_pack_url)
+qr.save("sticker_qr.png")
+
+print("QR code generated! Scan to add stickers.")
